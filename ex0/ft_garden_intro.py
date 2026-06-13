@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 # Pyhton module that prints a series of variables with set values
 
 if __name__ == "__main__":
