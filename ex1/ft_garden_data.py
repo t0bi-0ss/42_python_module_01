@@ -3,6 +3,7 @@ Module that defines a Plant class to track plant growth metrics.
 Demonstrates creating and displaying multiple plants.
 """
 
+
 class Plant:
     """Represents a plant with basic growth metrics."""
 
@@ -15,7 +16,8 @@ class Plant:
 
     def show(self) -> None:
         """Print the plant's information."""
-        print(f"{self.name.capitalize()}: {self.height}cm, {self.age} days old")
+        print(f"{self.name.capitalize()}: {self.height}cm, ", end="")
+        print(f"{self.age} days old")
 
 
 if __name__ == "__main__":

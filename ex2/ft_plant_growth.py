@@ -16,11 +16,12 @@ class Plant:
 
     def show(self) -> None:
         """Print the plant's information."""
-        print(f"{self.name.capitalize()}: {self.height:.1f}cm, {self.age} days old")
+        print(f"{self.name.capitalize()}: {self.height:.1f}cm, ", end="")
+        print(f"{self.age} days old")
 
     def grow(self) -> None:
         """Increment plant's heigth by .8cm"""
-        self.height += .8
+        self.height += 0.8
 
     def days_passed(self, days: int = 1) -> None:
         """Grow plant according to days passed"""
@@ -39,6 +40,7 @@ class Plant:
                 print(f"=== Day {day} ===")
                 self.show()
             print(f"Growth this week: {(self.height - original_height):.1f}")
+
 
 if __name__ == "__main__":
     plant_1 = Plant("Rose", 25, 30)
