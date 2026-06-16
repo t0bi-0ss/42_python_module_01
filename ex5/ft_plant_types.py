@@ -158,6 +158,39 @@ class Tree(Plant):
         super().show()
         print("Trunk diameter: " + f"{self.__trunk_diameter:.1f}cm")
 
+class Vegetable(Plant):
+    def __init__(
+            self,
+            name: str,
+            harvest_season: str,
+            height: float = 0,
+            age: int = 0,
+            nutritional_value: int = 0,
+    ) -> None:
+        if name == "":
+            print("Error: name must not be an empty string")
+            return
+        if harvest_season == "":
+            print("Error: harvest season must not be an empty string")
+            return
+        if nutritional_value < 0:
+            print("Error: nutritional value must not be a negative number")
+            return
+        super().__init__(name, height, age)
+        self.__nutritional_value = nutritional_value
+        self.__harvest_season = harvest_season
+
+    def get_nutritional_value(self) -> int:
+        return self.__nutritional_value
+
+    def set_nutritional_value(self, nutritional_value: int) -> None:
+        if nutritional_value < 0:
+            print("Error: nutritional value must not be a negative number")
+            return
+        self.__nutritional_value = nutritional_value
+
+    
+
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
