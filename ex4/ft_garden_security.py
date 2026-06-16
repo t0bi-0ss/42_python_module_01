@@ -46,7 +46,7 @@ class Plant:
             )
         else:
             self.__height = new_height
-            print(f"Height updated: {self.__height}")
+            print(f"Height updated: {self.__height}cm")
     
     def set_age(self, new_age: int) -> None:
         if new_age < 0:
@@ -58,7 +58,7 @@ class Plant:
             )
         else:
             self.__age = new_age
-            print(f"Age updated: {self.__age}")
+            print(f"Age updated: {self.__age} days")
 
 
 if __name__ == "__main__":
