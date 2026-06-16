@@ -8,6 +8,15 @@ class Plant:
             self.__height = height
             self.__age = age
 
+    def get_name(self) -> str:
+        return self.__name
+
+    def get_height(self) -> float:
+        return self.__height
+
+    def get_age(self) -> int:
+        return self.__age
+
     def show(self) -> None:
         """Print the plant's information."""
         print(f"{self.__name.capitalize()}: {self.__height:.1f}cm, ", end="")
@@ -57,7 +66,14 @@ class Plant:
 class Flower(Plant):
     """Represents a plant of type 'flower' with the ability to 'bloom'"""
 
-    def __init__(self, name: str, color:str, height: float = 0, age: int = 0, is_blooming: bool = False) -> None:
+    def __init__(
+        self,
+        name: str,
+        color: str,
+        height: float = 0,
+        age: int = 0,
+        is_blooming: bool = False,
+    ) -> None:
         """Initialize flower with same data as a plant and with color"""
         if color == "":
             print("Error: color must not be an empty string")
@@ -68,7 +84,7 @@ class Flower(Plant):
         super().__init__(name, height, age)
         self.__color = color
         self.__is_blooming = is_blooming
-    
+
     def show_blooming(self) -> None:
         if self.__is_blooming:
             print(f"{self.__name.capitalize()} is blooming beautifully!")
@@ -87,5 +103,6 @@ class Flower(Plant):
         else:
             self.__is_blooming = True
             print(f"[asking the {self.__name} to bloom]")
+
 
 
