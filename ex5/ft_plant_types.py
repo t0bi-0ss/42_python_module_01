@@ -78,7 +78,7 @@ class Flower(Plant):
         if color == "":
             print("Error: color must not be an empty string")
             return
-        if not (is_blooming == False or is_blooming == True):
+        if not (not is_blooming or is_blooming):
             print("Error: is_blooming must be either True or False")
             return
         super().__init__(name, height, age)
@@ -93,7 +93,7 @@ class Flower(Plant):
         self.__color = color
 
     def set_is_blooming(self, is_blooming: bool):
-        if not (is_blooming == False or is_blooming == True):
+        if not (not is_blooming or is_blooming):
             print("Error: new is_blooming state must be either True or False")
             print("Blooming state update failed")
             return
