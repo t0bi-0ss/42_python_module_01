@@ -35,3 +35,16 @@ class Plant:
                 print(f"=== Day {day} ===")
                 self.show()
             print(f"Growth this week: {(self.__height - original_height):.1f}")
+
+    def set_height(self, new_height: int):
+        if new_height <= 0:
+            print(
+                f"{self.__name}: Error, height can't be negative"
+            )
+            print(
+                "Height update rejected"
+            )
+        else:
+            self.__height = new_height
+    
+    
