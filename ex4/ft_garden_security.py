@@ -38,33 +38,23 @@ class Plant:
 
     def set_height(self, new_height: int) -> None:
         if new_height < 0:
-            print(
-                f"{self.__name.capitalize()}: Error, height can't be negative"
-            )
-            print(
-                "Height update rejected"
-            )
+            print(f"{self.__name.capitalize()}: Error, height can't be negative")
+            print("Height update rejected")
         else:
             self.__height = new_height
             print(f"Height updated: {self.__height}cm")
-    
+
     def set_age(self, new_age: int) -> None:
         if new_age < 0:
-            print(
-                f"{self.__name.capitalize()}: Error, age can't be negative"
-            )
-            print(
-                "Age update rejected"
-            )
+            print(f"{self.__name.capitalize()}: Error, age can't be negative")
+            print("Age update rejected")
         else:
             self.__age = new_age
             print(f"Age updated: {self.__age} days")
 
 
 if __name__ == "__main__":
-    print(
-        "=== Garden Security System ==="
-    )
+    print("=== Garden Security System ===")
     plant_1 = Plant("rose", 15, 10)
     print("Plant created: ", end="")
     plant_1.show()
