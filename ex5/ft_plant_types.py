@@ -111,4 +111,10 @@ class Flower(Plant):
             print(f"[asking the {self.get_name()} to bloom]")
 
 
-
+if __name__ == "__main__":
+    print("=== Garden Plant Types ===")
+    print("=== Flower")
+    flower_1 = Flower("Rose", "red", 15, 10)
+    flower_1.show()
+    flower_1.bloom()
+    flower_1.show()
