@@ -8,6 +8,15 @@ class Plant:
             self.__height = height
             self.__age = age
 
+    def get_name(self) -> str:
+        return self.__name
+
+    def get_height(self) -> float:
+        return self.__height
+
+    def get_age(self) -> int:
+        return self.__age
+
     def show(self) -> None:
         """Print the plant's information."""
         print(f"{self.__name.capitalize()}: {self.__height:.1f}cm, ", end="")
