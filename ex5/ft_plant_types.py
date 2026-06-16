@@ -85,6 +85,12 @@ class Flower(Plant):
         self.__color = color
         self.__is_blooming = is_blooming
 
+    def get_color(self) -> str:
+        return self.__color
+    
+    def get_is_blooming(self) -> bool:
+        return self.__is_blooming
+    
     def show_blooming(self) -> None:
         if self.__is_blooming:
             print(f"{self.__name.capitalize()} is blooming beautifully!")
