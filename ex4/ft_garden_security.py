@@ -36,8 +36,8 @@ class Plant:
                 self.show()
             print(f"Growth this week: {(self.__height - original_height):.1f}")
 
-    def set_height(self, new_height: int):
-        if new_height <= 0:
+    def set_height(self, new_height: int) -> None:
+        if new_height < 0:
             print(
                 f"{self.__name}: Error, height can't be negative"
             )
@@ -47,4 +47,13 @@ class Plant:
         else:
             self.__height = new_height
     
-    
+    def set_age(self, new_age: int) -> None:
+        if new_age < 0:
+            print(
+                f"{self.__name}: Error, age can't be negative"
+            )
+            print(
+                "Age update rejected"
+            )
+        else:
+            self.__age = new_age
