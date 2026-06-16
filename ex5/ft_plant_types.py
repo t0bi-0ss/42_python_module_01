@@ -94,7 +94,7 @@ class Flower(Plant):
             return
         self.__color = color
 
-    def set_is_blooming(self, is_blooming: bool):
+    def set_is_blooming(self, is_blooming: bool) -> None:
         if not (not is_blooming or is_blooming):
             print("Error: new is_blooming state must be either True or False")
             print("Blooming state update failed")
@@ -145,7 +145,7 @@ class Tree(Plant):
     def get_trunk_diameter(self) -> float:
         return self.__trunk_diameter
 
-    def produce_shade(self):
+    def produce_shade(self) -> None:
         print(f"[asking the {self.get_name()} to produce shade]")
         print(
             f"Tree {self.get_name().capitalize()} "
@@ -153,6 +153,10 @@ class Tree(Plant):
             + "of {self.get_height:.1f}cm long "
             + "and {self.__trunk_diameter:.1f}cm wide."
         )
+
+    def show(self) -> None:
+        super().show()
+        print(f"Trunk diameter: " + "{self.__trunk_diameter:.1f}cm")
 
 
 if __name__ == "__main__":
@@ -162,3 +166,4 @@ if __name__ == "__main__":
     flower_1.show()
     flower_1.bloom()
     flower_1.show()
+    
