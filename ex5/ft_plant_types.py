@@ -7,6 +7,8 @@ class Plant:
             self.__name = name
             self.__height = height
             self.__age = age
+        else:
+            print("Error: could not initiate class with passed values")
 
     def get_name(self) -> str:
         return self.__name
@@ -122,6 +124,35 @@ class Flower(Plant):
         else:
             self.__is_blooming = True
             print(f"[asking the {self.get_name()} to bloom]")
+
+
+class Tree(Plant):
+    def __init__(
+        self, name: str, trunk_diameter: float, height: float = 0, age: int = 0
+    ) -> None:
+        if trunk_diameter <= 0:
+            print("Error: trunk diameter must be a positive number")
+            return
+        super().__init__(name, height, age)
+        self.__trunk_diameter = trunk_diameter
+
+    def set_trunk_diameter(self, trunk_diameter: float) -> None:
+        if trunk_diameter <= 0:
+            print("Error: trunk diameter must be a positive number")
+            return
+        self.__trunk_diameter = trunk_diameter
+
+    def get_trunk_diameter(self) -> float:
+        return self.__trunk_diameter
+
+    def produce_shade(self):
+        print(f"[asking the {self.get_name()} to produce shade]")
+        print(
+            f"Tree {self.get_name().capitalize()} "
+            + "now produces a shade "
+            + "of {self.get_height:.1f}cm long "
+            + "and {self.__trunk_diameter:.1f}cm wide."
+        )
 
 
 if __name__ == "__main__":
