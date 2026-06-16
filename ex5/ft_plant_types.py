@@ -150,13 +150,13 @@ class Tree(Plant):
         print(
             f"Tree {self.get_name().capitalize()} "
             + "now produces a shade "
-            + "of {self.get_height:.1f}cm long "
-            + "and {self.__trunk_diameter:.1f}cm wide."
+            + f"of {self.get_height():.1f}cm long "
+            + f"and {self.__trunk_diameter:.1f}cm wide."
         )
 
     def show(self) -> None:
         super().show()
-        print(f"Trunk diameter: " + "{self.__trunk_diameter:.1f}cm")
+        print("Trunk diameter: " + f"{self.__trunk_diameter:.1f}cm")
 
 
 if __name__ == "__main__":
@@ -166,4 +166,7 @@ if __name__ == "__main__":
     flower_1.show()
     flower_1.bloom()
     flower_1.show()
-    
+    print("\n=== Tree")
+    tree_1 = Tree("oak", 5, 200, 365)
+    tree_1.show()
+    tree_1.produce_shade()
