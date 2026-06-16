@@ -85,6 +85,19 @@ class Flower(Plant):
         self.__color = color
         self.__is_blooming = is_blooming
 
+    def set_color(self, color: str) -> None:
+        if color == "":
+            print("Error: new color must not be an empty string")
+            print("Color update failed")
+            return
+        self.__color = color
+
+    def set_is_blooming(self, is_blooming: bool):
+        if not (is_blooming == False or is_blooming == True):
+            print("Error: new is_blooming state must be either True or False")
+            print("Blooming state update failed")
+            return
+
     def get_color(self) -> str:
         return self.__color
 
