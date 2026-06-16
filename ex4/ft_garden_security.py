@@ -4,29 +4,29 @@ class Plant:
     def __init__(self, name: str, height: float = 0, age: int = 0) -> None:
         """Initialize a plant with name, height (cm), and age (days)."""
         if height >= 0 and age >= 0 and name != "":
-            self.name = name
-            self.height = height
-            self.age = age
+            self.__name = name
+            self.__height = height
+            self.__age = age
 
     def show(self) -> None:
         """Print the plant's information."""
-        print(f"{self.name.capitalize()}: {self.height:.1f}cm, ", end="")
-        print(f"{self.age} days old")
+        print(f"{self.__name.capitalize()}: {self.__height:.1f}cm, ", end="")
+        print(f"{self.__age} days old")
 
     def grow(self) -> None:
         """Increment plant's heigth by .8cm"""
-        self.height += 0.8
+        self.__height += 0.8
 
     def days_passed(self, days: int = 1) -> None:
         """Grow plant according to days passed"""
         if days > 0:
-            self.age += days
+            self.__age += days
             for day in range(1, days + 1):
                 self.grow()
 
     def garden_plant_growth(self, days: int = 0) -> None:
         """Display plant's growth during a given number of days"""
-        original_height = self.height
+        original_height = self.__height
         if days > 0:
             print("=== Garden Plant Growth ===")
             self.show()
@@ -34,4 +34,4 @@ class Plant:
                 self.days_passed()
                 print(f"=== Day {day} ===")
                 self.show()
-            print(f"Growth this week: {(self.height - original_height):.1f}")
+            print(f"Growth this week: {(self.__height - original_height):.1f}")
