@@ -33,18 +33,6 @@ class Plant:
             for day in range(1, days + 1):
                 self.grow()
 
-    def garden_plant_growth(self, days: int = 0) -> None:
-        """Display plant's growth during a given number of days"""
-        original_height = self.__height
-        if days > 0:
-            print("=== Garden Plant Growth ===")
-            self.show()
-            for day in range(1, days + 1):
-                self.days_passed()
-                print(f"=== Day {day} ===")
-                self.show()
-            print(f"Growth this week: {(self.__height - original_height):.1f}")
-
     def set_height(self, new_height: int) -> None:
         if new_height < 0:
             print(f"{self.__name.capitalize()}: ", end="")
