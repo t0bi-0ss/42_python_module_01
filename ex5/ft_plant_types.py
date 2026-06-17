@@ -27,7 +27,7 @@ class Plant:
 
     def get_growth_rate(self) -> float:
         return self.__growth_rate
-    
+
     def set_growth_rate(self, growth_rate: float) -> None:
         """Set plant's growth rate (cm) per day"""
         if growth_rate <= 0:
@@ -155,15 +155,16 @@ class Tree(Plant):
         super().show()
         print("Trunk diameter: " + f"{self.__trunk_diameter:.1f}cm")
 
+
 class Vegetable(Plant):
     def __init__(
-            self,
-            name: str,
-            harvest_season: str,
-            height: float = 0,
-            age: int = 0,
-            growth_rate: float = 0,
-            nutritional_value: int = 0,
+        self,
+        name: str,
+        harvest_season: str,
+        height: float = 0,
+        age: int = 0,
+        growth_rate: float = 0,
+        nutritional_value: int = 0,
     ) -> None:
         if name == "":
             print("Error: name must not be an empty string")
@@ -189,7 +190,7 @@ class Vegetable(Plant):
 
     def get_harvest_season(self) -> str:
         return self.__harvest_season
-    
+
     def set_harvest_season(self, harvest_season: str) -> None:
         if harvest_season == "":
             print("Error: harvest season must not be an empty string")
@@ -200,7 +201,7 @@ class Vegetable(Plant):
         super().show()
         print(f"Harvest season: {self.__harvest_season}")
         print(f"Nutritional value: {self.__nutritional_value}")
-    
+
     def age_and_grow(self, days: int) -> None:
         if days <= 0:
             print("Error: days must be a positive number")
@@ -211,7 +212,6 @@ class Vegetable(Plant):
             super().grow()
             self.__nutritional_value += 1
 
-    
 
 if __name__ == "__main__":
     print("=== Garden Plant Types ===")
@@ -225,7 +225,7 @@ if __name__ == "__main__":
     tree_1.show()
     tree_1.produce_shade()
     print("\n=== Vegetable")
-    vegetable_1 = Vegetable("tomato", "April", 5, 10, 1.1)
+    vegetable_1 = Vegetable("tomato", "April", 5, 10, 2.1)
     vegetable_1.show()
     vegetable_1.age_and_grow(20)
     vegetable_1.show()
