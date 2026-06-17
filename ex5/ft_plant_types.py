@@ -42,10 +42,10 @@ class Plant:
 
     def grow(self) -> None:
         """Increment plant's heigth by growth rate"""
-        if self.growth_rate == 0:
+        if self.__growth_rate == 0:
             print("Error: growth_rate has not been set yet")
             return
-        self.__height += self.growth_rate
+        self.__height += self.__growth_rate
 
     def age_plant(self, days: int = 1) -> None:
         """Modify plant's age by days passed"""
@@ -162,6 +162,7 @@ class Vegetable(Plant):
             harvest_season: str,
             height: float = 0,
             age: int = 0,
+            growth_rate: float = 0,
             nutritional_value: int = 0,
     ) -> None:
         if name == "":
@@ -173,7 +174,7 @@ class Vegetable(Plant):
         if nutritional_value < 0:
             print("Error: nutritional value must not be a negative number")
             return
-        super().__init__(name, height, age)
+        super().__init__(name, height, age, growth_rate)
         self.__nutritional_value = nutritional_value
         self.__harvest_season = harvest_season
 
@@ -205,7 +206,7 @@ class Vegetable(Plant):
             print("Error: days must be a positive number")
             return
         print(f"[make {self.get_name()} grow and age for {days} days]")
-        super().age(days)
+        self.age_plant(days)
         for day in range(1, days + 1):
             super().grow()
             self.__nutritional_value += 1
@@ -224,3 +225,7 @@ if __name__ == "__main__":
     tree_1.show()
     tree_1.produce_shade()
     print("\n=== Vegetable")
+    vegetable_1 = Vegetable("tomato", "April", 5, 10, 1.1)
+    vegetable_1.show()
+    vegetable_1.age_and_grow(20)
+    vegetable_1.show()
