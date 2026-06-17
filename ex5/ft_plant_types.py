@@ -199,6 +199,16 @@ class Vegetable(Plant):
         super().show()
         print(f"Harvest season: {self.__harvest_season}")
         print(f"Nutritional value: {self.__nutritional_value}")
+    
+    def age_and_grow(self, days: int) -> None:
+        if days <= 0:
+            print("Error: days must be a positive number")
+            return
+        print(f"[make {self.get_name()} grow and age for {days} days]")
+        super().age(days)
+        for day in range(1, days + 1):
+            super().grow()
+            self.__nutritional_value += 1
 
     
 
@@ -213,3 +223,4 @@ if __name__ == "__main__":
     tree_1 = Tree("oak", 5, 200, 365)
     tree_1.show()
     tree_1.produce_shade()
+    print("\n=== Vegetable")
