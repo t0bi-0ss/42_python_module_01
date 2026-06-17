@@ -81,18 +81,14 @@ class Flower(Plant):
         color: str,
         height: float = 0,
         age: int = 0,
-        is_blooming: bool = False,
     ) -> None:
-        """Initialize flower with same data as a plant and with color"""
+        """Initialize flower (Plant) with color"""
         if color == "":
             print("Error: color must not be an empty string")
             return
-        if not (not is_blooming or is_blooming):
-            print("Error: is_blooming must be either True or False")
-            return
         super().__init__(name, height, age)
         self.__color = color
-        self.__is_blooming = is_blooming
+        self.__is_blooming = False
 
     def set_color(self, color: str) -> None:
         if color == "":
@@ -100,12 +96,6 @@ class Flower(Plant):
             print("Color update failed")
             return
         self.__color = color
-
-    def set_is_blooming(self, is_blooming: bool) -> None:
-        if not (not is_blooming or is_blooming):
-            print("Error: new is_blooming state must be either True or False")
-            print("Blooming state update failed")
-            return
 
     def get_color(self) -> str:
         return self.__color
