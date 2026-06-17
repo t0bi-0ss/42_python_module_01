@@ -7,8 +7,15 @@ Demonstrates creating and displaying multiple plants.
 class Plant:
     """Represents a plant with basic growth metrics."""
 
-    def __init__(self, name: str, height: float = 0, age: int = 0, growth_rate: float = 0) -> None:
-        """Initialize a plant with name, height (cm), age (days) and growth rate (cm)."""
+    def __init__(
+        self,
+        name: str,
+        height: float = 0,
+        age: int = 0,
+        growth_rate: float = 0
+    ) -> None:
+        """Initialize a plant with name, height (cm), age
+        (days) and growth rate (cm)."""
         if height >= 0 and age >= 0 and name != "":
             self.name = name
             self.height = height
@@ -40,18 +47,6 @@ class Plant:
             print("Error: days must be a positive number")
             return
         self.age += days
-
-    def garden_plant_growth(self, days: int = 0) -> None:
-        """Grow and display plant's growth during a given number of days"""
-        original_height = self.height
-        if days > 0:
-            print("=== Garden Plant Growth ===")
-            self.show()
-            for day in range(1, days + 1):
-                self.age()
-                print(f"=== Day {day} ===")
-                self.show()
-            print(f"Growth this week: {(self.height - original_height):.1f}")
 
 
 if __name__ == "__main__":
