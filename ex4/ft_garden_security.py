@@ -27,7 +27,7 @@ class Plant:
 
     def get_growth_rate(self) -> float:
         return self.__growth_rate
-    
+
     def set_growth_rate(self, growth_rate: float) -> None:
         """Set plant's growth rate (cm) per day"""
         if growth_rate <= 0:
