@@ -15,7 +15,7 @@ class Plant:
 
         def get_call(self, method_name: str) -> int:
             return self._calls[method_name]
-    
+
     """A decorator to intercept calls"""
     @staticmethod
     def track_call(func):
@@ -24,7 +24,7 @@ class Plant:
             self._statistics.add_call(func.__name__)
             return func(self, *args, **kwargs)
         return wrapper
-    
+
     def __init__(
         self,
         name: str,
@@ -109,6 +109,7 @@ class Plant:
     @classmethod
     def anonymous(cls):
         return cls("Unknown plant", 0, 0)
+
 
 class Flower(Plant):
     """Represents a plant of type 'flower' with the ability to 'bloom'"""
@@ -274,15 +275,15 @@ class Seed(Flower):
 
     def get_seeds(self) -> int:
         return self.__seeds
-    
+
     def bloom(self) -> None:
         super().bloom()
         self.__seeds = 42
-    
+
     def show(self) -> None:
         super().show()
         print(f"Seeds: {self.__seeds}")
-    
+
     def grow_age_bloom(self, days: int = 1) -> None:
         """Make seed bloom; grow and age for given number of days"""
         if days <= 0:
@@ -293,6 +294,7 @@ class Seed(Flower):
             super().grow()
         super().age_plant(days)
         super().bloom()
+
 
 def show_statistics(object: Plant):
     """Displays statistics for any Plant"""
