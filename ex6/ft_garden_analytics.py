@@ -170,6 +170,7 @@ class Tree(Plant):
             return
         super().__init__(name, height, age)
         self.__trunk_diameter = trunk_diameter
+        self._statistics._calls["produce_shade"] = 0
 
     def set_trunk_diameter(self, trunk_diameter: float) -> None:
         if trunk_diameter <= 0:
@@ -180,6 +181,7 @@ class Tree(Plant):
     def get_trunk_diameter(self) -> float:
         return self.__trunk_diameter
 
+    @Plant.track_call
     def produce_shade(self) -> None:
         print(f"[asking the {self.get_name()} to produce shade]")
         print(
