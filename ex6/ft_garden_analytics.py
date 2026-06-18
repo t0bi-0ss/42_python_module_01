@@ -302,8 +302,7 @@ class Seed(Flower):
             print("Error: days must be a positive number")
             return
         print(f"[make {self.get_name()} grow, age and bloom]")
-        for day in range(1, days+1):
-            super().grow()
+        super().grow()
         super().age_plant(days)
         self.bloom()
 
@@ -345,7 +344,7 @@ if __name__ == "__main__":
     show_statistics(tree_1)
     print()
     print("=== Seed")
-    seed_1 = Seed("Sunflower", "yellow", 80, 45, 1.5)
+    seed_1 = Seed("Sunflower", "yellow", 80, 45, 30)
     seed_1.show()
     seed_1.grow_age_bloom(20)
     seed_1.show()
