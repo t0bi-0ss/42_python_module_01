@@ -7,13 +7,13 @@ class Plant:
         ) -> None:
             self._calls = {"grow": 0, "age": 0, "show": 0}
 
-        def add_call(self, method_name) -> None:
+        def add_call(self, method_name: str) -> None:
             if method_name in self._calls:
                 self._calls[method_name] += 1
             else:
                 self._calls[method_name] = 1
 
-        def get_call(self, method_name) -> int:
+        def get_call(self, method_name: str) -> int:
             return self._calls[method_name]
     
     """A decorator to intercept calls"""
@@ -294,3 +294,16 @@ class Seed(Flower):
         super().age_plant(days)
         super().bloom()
 
+def show_statistics(object: Plant):
+    """Displays statistics for any Plant"""
+    print(f"[statistics for {object.get_name}]")
+    print(
+        "Stats: "
+        + f"{object._statistics.get_call("grow")} grow"
+        + f", {object._statistics.get_call("age")} age"
+        + f", {object._statistics.get_call("show")} show"
+    )
+    if "shade" in object._statistics._calls:
+        print(
+            f"{object._statistics.get_call("shade")} shade"
+        )
