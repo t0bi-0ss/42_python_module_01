@@ -11,65 +11,65 @@ class Plant:
         """Initialize a plant with name, height (cm), age
         (days) and growth rate (cm)."""
         if height >= 0 and age >= 0 and name != "":
-            self.__name = name
-            self.__height = height
-            self.__age = age
-            self.__growth_rate = growth_rate
+            self._name = name
+            self._height = height
+            self._age = age
+            self._growth_rate = growth_rate
 
     def get_name(self) -> str:
-        return self.__name
+        return self._name
 
     def get_height(self) -> float:
-        return self.__height
+        return self._height
 
     def get_age(self) -> int:
-        return self.__age
+        return self._age
 
     def get_growth_rate(self) -> float:
-        return self.__growth_rate
+        return self._growth_rate
 
     def set_growth_rate(self, growth_rate: float) -> None:
         """Set plant's growth rate (cm) per day"""
         if growth_rate <= 0:
             print("Error: growth rate must be a positive number")
             return
-        self.__growth_rate = growth_rate
+        self._growth_rate = growth_rate
 
     def show(self) -> None:
         """Print the plant's information."""
-        print(f"{self.__name.capitalize()}: {self.__height:.1f}cm, ", end="")
-        print(f"{self.__age} days old")
+        print(f"{self._name.capitalize()}: {self._height:.1f}cm, ", end="")
+        print(f"{self._age} days old")
 
     def grow(self) -> None:
         """Increment plant's heigth by growth rate"""
-        if self.__growth_rate == 0:
+        if self._growth_rate == 0:
             print("Error: growth_rate has not been set yet")
             return
-        self.__height += self.__growth_rate
+        self._height += self._growth_rate
 
     def age_plant(self, days: int = 1) -> None:
         """Modify plant's age by days passed"""
         if days <= 0:
             print("Error: days must be a positive number")
             return
-        self.__age += days
+        self._age += days
 
     def set_height(self, new_height: int) -> None:
         if new_height < 0:
-            print(f"{self.__name.capitalize()}: ", end="")
+            print(f"{self._name.capitalize()}: ", end="")
             print("Error, height can't be negative")
             print("Height update rejected")
         else:
-            self.__height = new_height
-            print(f"Height updated: {self.__height}cm")
+            self._height = new_height
+            print(f"Height updated: {self._height}cm")
 
     def set_age(self, new_age: int) -> None:
         if new_age < 0:
-            print(f"{self.__name.capitalize()}: Error, age can't be negative")
+            print(f"{self._name.capitalize()}: Error, age can't be negative")
             print("Age update rejected")
         else:
-            self.__age = new_age
-            print(f"Age updated: {self.__age} days")
+            self._age = new_age
+            print(f"Age updated: {self._age} days")
 
 
 class Flower(Plant):
@@ -87,24 +87,24 @@ class Flower(Plant):
             print("Error: color must not be an empty string")
             return
         super().__init__(name, height, age)
-        self.__color = color
-        self.__is_blooming = False
+        self._color = color
+        self._is_blooming = False
 
     def set_color(self, color: str) -> None:
         if color == "":
             print("Error: new color must not be an empty string")
             print("Color update failed")
             return
-        self.__color = color
+        self._color = color
 
     def get_color(self) -> str:
-        return self.__color
+        return self._color
 
     def get_is_blooming(self) -> bool:
-        return self.__is_blooming
+        return self._is_blooming
 
     def show_blooming(self) -> None:
-        if self.__is_blooming:
+        if self._is_blooming:
             print(f"{(self.get_name()).capitalize()} is blooming beautifully!")
         else:
             print(f"{(self.get_name()).capitalize()} has not bloomed yet")
@@ -112,14 +112,14 @@ class Flower(Plant):
     def show(self) -> None:
         """Print the flower's information"""
         super().show()
-        print(f"Color: {self.__color}")
+        print(f"Color: {self._color}")
         self.show_blooming()
 
     def bloom(self) -> None:
-        if self.__is_blooming:
+        if self._is_blooming:
             print(f"{(self.get_name()).capitalize()} is already blooming")
         else:
-            self.__is_blooming = True
+            self._is_blooming = True
             print(f"[asking the {self.get_name()} to bloom]")
 
 
@@ -131,16 +131,16 @@ class Tree(Plant):
             print("Error: trunk diameter must be a positive number")
             return
         super().__init__(name, height, age)
-        self.__trunk_diameter = trunk_diameter
+        self._trunk_diameter = trunk_diameter
 
     def set_trunk_diameter(self, trunk_diameter: float) -> None:
         if trunk_diameter <= 0:
             print("Error: trunk diameter must be a positive number")
             return
-        self.__trunk_diameter = trunk_diameter
+        self._trunk_diameter = trunk_diameter
 
     def get_trunk_diameter(self) -> float:
-        return self.__trunk_diameter
+        return self._trunk_diameter
 
     def produce_shade(self) -> None:
         print(f"[asking the {self.get_name()} to produce shade]")
@@ -148,12 +148,12 @@ class Tree(Plant):
             f"Tree {self.get_name().capitalize()} "
             + "now produces a shade "
             + f"of {self.get_height():.1f}cm long "
-            + f"and {self.__trunk_diameter:.1f}cm wide."
+            + f"and {self._trunk_diameter:.1f}cm wide."
         )
 
     def show(self) -> None:
         super().show()
-        print("Trunk diameter: " + f"{self.__trunk_diameter:.1f}cm")
+        print("Trunk diameter: " + f"{self._trunk_diameter:.1f}cm")
 
 
 class Vegetable(Plant):
@@ -176,31 +176,31 @@ class Vegetable(Plant):
             print("Error: nutritional value must not be a negative number")
             return
         super().__init__(name, height, age, growth_rate)
-        self.__nutritional_value = nutritional_value
-        self.__harvest_season = harvest_season
+        self._nutritional_value = nutritional_value
+        self._harvest_season = harvest_season
 
     def get_nutritional_value(self) -> int:
-        return self.__nutritional_value
+        return self._nutritional_value
 
     def set_nutritional_value(self, nutritional_value: int) -> None:
         if nutritional_value < 0:
             print("Error: nutritional value must not be a negative number")
             return
-        self.__nutritional_value = nutritional_value
+        self._nutritional_value = nutritional_value
 
     def get_harvest_season(self) -> str:
-        return self.__harvest_season
+        return self._harvest_season
 
     def set_harvest_season(self, harvest_season: str) -> None:
         if harvest_season == "":
             print("Error: harvest season must not be an empty string")
             return
-        self.__harvest_season = harvest_season
+        self._harvest_season = harvest_season
 
     def show(self) -> None:
         super().show()
-        print(f"Harvest season: {self.__harvest_season}")
-        print(f"Nutritional value: {self.__nutritional_value}")
+        print(f"Harvest season: {self._harvest_season}")
+        print(f"Nutritional value: {self._nutritional_value}")
 
     def age_and_grow(self, days: int) -> None:
         if days <= 0:
@@ -210,7 +210,7 @@ class Vegetable(Plant):
         self.age_plant(days)
         for day in range(1, days + 1):
             super().grow()
-            self.__nutritional_value += 1
+            self._nutritional_value += 1
 
 
 if __name__ == "__main__":
