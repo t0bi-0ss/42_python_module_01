@@ -1,6 +1,30 @@
 class Plant:
     """Represents a plant with basic growth metrics."""
+    class Statistics:
+        """Nested class that manages method call counts"""
+        def __init__(
+                self
+        ) -> None:
+            self._calls = {"grow": 0, "age": 0, "show": 0}
 
+        def add_call(self, method_name) -> None:
+            if method_name in self._calls:
+                self._calls[method_name] += 1
+            else:
+                self._calls[method_name] = 1
+
+        def get_call(self, method_name) -> int:
+            return self._calls[method_name]
+    
+    """A decorator to intercept calls"""
+    @staticmethod
+    def track_call(func):
+        def wrapper(self, *args, **kwargs):
+            """Increment the count in the nested Statistics instance"""
+            self._statistics.add_call(func.__name__)
+            return func(self, *args, **kwargs)
+        return wrapper
+    
     def __init__(
         self,
         name: str,
@@ -15,6 +39,7 @@ class Plant:
             self.__height = height
             self.__age = age
             self.__growth_rate = growth_rate
+            self._statistics = self.Statistics()
 
     def get_name(self) -> str:
         return self.__name
@@ -35,11 +60,13 @@ class Plant:
             return
         self.__growth_rate = growth_rate
 
+    @track_call
     def show(self) -> None:
         """Print the plant's information."""
         print(f"{self.__name.capitalize()}: {self.__height:.1f}cm, ", end="")
         print(f"{self.__age} days old")
 
+    @track_call
     def grow(self) -> None:
         """Increment plant's heigth by growth rate"""
         if self.__growth_rate == 0:
@@ -47,6 +74,7 @@ class Plant:
             return
         self.__height += self.__growth_rate
 
+    @track_call
     def age_plant(self, days: int = 1) -> None:
         """Modify plant's age by days passed"""
         if days <= 0:
