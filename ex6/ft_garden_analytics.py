@@ -161,7 +161,7 @@ class Flower(Plant):
         else:
             self.__is_blooming = True
             print(f"[asking the {self.get_name()} to bloom]")
-    
+
     def grow_and_bloom(self) -> None:
         self.__is_blooming = True
         self.grow()
