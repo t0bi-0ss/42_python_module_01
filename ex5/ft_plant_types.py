@@ -81,12 +81,13 @@ class Flower(Plant):
         color: str,
         height: float = 0,
         age: int = 0,
+        growth_rate: float = 0
     ) -> None:
         """Initialize flower (Plant) with color"""
         if color == "":
             print("Error: color must not be an empty string")
             return
-        super().__init__(name, height, age)
+        super().__init__(name, height, age, growth_rate)
         self._color = color
         self._is_blooming = False
 
@@ -125,12 +126,19 @@ class Flower(Plant):
 
 class Tree(Plant):
     def __init__(
-        self, name: str, trunk_diameter: float, height: float = 0, age: int = 0
+        self,
+        name: str,
+        trunk_diameter:
+        float,
+        height:
+        float = 0,
+        age: int = 0,
+        growth_rate: float = 0
     ) -> None:
         if trunk_diameter <= 0:
             print("Error: trunk diameter must be a positive number")
             return
-        super().__init__(name, height, age)
+        super().__init__(name, height, age, growth_rate)
         self._trunk_diameter = trunk_diameter
 
     def set_trunk_diameter(self, trunk_diameter: float) -> None:
