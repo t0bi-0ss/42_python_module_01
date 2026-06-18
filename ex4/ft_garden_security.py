@@ -16,23 +16,27 @@ class Plant:
             self._age = age
             self._growth_rate = growth_rate
 
-    def get_name(self) -> str:
+    @property 
+    def name(self) -> str:
         return self._name
 
-    def get_height(self) -> float:
+    @property
+    def height(self) -> float:
         return self._height
 
-    def get_age(self) -> int:
+    @property
+    def age(self) -> int:
         return self._age
 
-    def get_growth_rate(self) -> float:
+    @property
+    def growth_rate(self) -> float:
         return self._growth_rate
 
-    def set_growth_rate(self, growth_rate: float) -> None:
+    @growth_rate.setter
+    def growth_rate(self, growth_rate: float) -> None:
         """Set plant's growth rate (cm) per day"""
         if growth_rate <= 0:
-            print("Error: growth rate must be a positive number")
-            return
+            raise ValueError("Error: growth rate must be a positive number")
         self._growth_rate = growth_rate
 
     def show(self) -> None:
@@ -54,7 +58,8 @@ class Plant:
             return
         self._age += days
 
-    def set_height(self, new_height: int) -> None:
+    @height.setter
+    def height(self, new_height: int) -> None:
         if new_height < 0:
             print(f"{self._name.capitalize()}: ", end="")
             print("Error, height can't be negative")
@@ -63,7 +68,8 @@ class Plant:
             self._height = new_height
             print(f"Height updated: {self._height}cm")
 
-    def set_age(self, new_age: int) -> None:
+    @age.setter
+    def age(self, new_age: int) -> None:
         if new_age < 0:
             print(f"{self._name.capitalize()}: Error, age can't be negative")
             print("Age update rejected")
@@ -78,11 +84,11 @@ if __name__ == "__main__":
     print("Plant created: ", end="")
     plant_1.show()
     print()
-    plant_1.set_height(25)
-    plant_1.set_age(30)
+    plant_1.height = 25
+    plant_1.age = 30
     print()
-    plant_1.set_height(-1)
-    plant_1.set_age(-1)
+    plant_1.height = -1
+    plant_1.age = -1
     print()
     print("Current state: ", end="")
     plant_1.show()
