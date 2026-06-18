@@ -296,9 +296,9 @@ class Seed(Flower):
         super().bloom()
 
 
-def show_statistics(object: Plant):
+def show_statistics(object: Plant) -> None:
     """Displays statistics for any Plant"""
-    print(f"[statistics for {object.get_name}]")
+    print(f"[statistics for {object.get_name()}]")
     print(
         "Stats: "
         + f"{object._statistics.get_call("grow")} grow"
@@ -309,3 +309,19 @@ def show_statistics(object: Plant):
         print(
             f"{object._statistics.get_call("shade")} shade"
         )
+
+
+if __name__ == "__main__":
+    print("=== Garden statistics ===")
+    print("=== Check year-old")
+    print("Is 30 days more than a year? -> ", end="")
+    print("%s" % (Plant.is_over_year(30)))
+    print("Is 400 days more than a year? -> ", end="")
+    print("%s" % (Plant.is_over_year(400)))
+    print("\n===Flower")
+    flower_1 = Flower("rose", "red", 15, 10)
+    flower_1.show()
+    show_statistics(flower_1)
+    flower_1.bloom()
+    flower_1.show()
+    show_statistics(flower_1)
