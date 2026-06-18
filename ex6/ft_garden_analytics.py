@@ -120,12 +120,13 @@ class Flower(Plant):
         color: str,
         height: float = 0,
         age: int = 0,
+        growth_rate: float = 0
     ) -> None:
         """Initialize flower (Plant) with color"""
         if color == "":
             print("Error: color must not be an empty string")
             return
-        super().__init__(name, height, age)
+        super().__init__(name, height, age, growth_rate)
         self.__color = color
         self.__is_blooming = False
 
@@ -160,16 +161,26 @@ class Flower(Plant):
         else:
             self.__is_blooming = True
             print(f"[asking the {self.get_name()} to bloom]")
+    
+    def grow_and_bloom(self) -> None:
+        self.__is_blooming = True
+        self.grow()
+        print(f"Asking the {self.get_name()} to grow and bloom")
 
 
 class Tree(Plant):
     def __init__(
-        self, name: str, trunk_diameter: float, height: float = 0, age: int = 0
+        self,
+        name: str,
+        trunk_diameter: float,
+        height: float = 0,
+        age: int = 0,
+        growth_rate: float = 0
     ) -> None:
         if trunk_diameter <= 0:
             print("Error: trunk diameter must be a positive number")
             return
-        super().__init__(name, height, age)
+        super().__init__(name, height, age, growth_rate)
         self.__trunk_diameter = trunk_diameter
         self._statistics._calls["produce_shade"] = 0
 
@@ -261,6 +272,7 @@ class Seed(Flower):
         color: str,
         height: float = 0,
         age: int = 0,
+        growth_rate: float = 0
     ) -> None:
         if name == "":
             print("Error: name must not be empty")
@@ -270,7 +282,7 @@ class Seed(Flower):
             return
         if age < 0 or height < 0:
             print("Error: age and height must not be negative numbers")
-        super().__init__(name, color, height, age)
+        super().__init__(name, color, height, age, growth_rate)
         self.__seeds = 0
 
     def get_seeds(self) -> int:
@@ -293,7 +305,7 @@ class Seed(Flower):
         for day in range(1, days+1):
             super().grow()
         super().age_plant(days)
-        super().bloom()
+        self.bloom()
 
 
 def show_statistics(object: Plant) -> None:
@@ -305,9 +317,9 @@ def show_statistics(object: Plant) -> None:
         + f", {object._statistics.get_call("age")} age"
         + f", {object._statistics.get_call("show")} show"
     )
-    if "shade" in object._statistics._calls:
+    if "produce_shade" in object._statistics._calls:
         print(
-            f"{object._statistics.get_call("shade")} shade"
+            f"{object._statistics.get_call("produce_shade")} shade"
         )
 
 
@@ -319,9 +331,27 @@ if __name__ == "__main__":
     print("Is 400 days more than a year? -> ", end="")
     print("%s" % (Plant.is_over_year(400)))
     print("\n===Flower")
-    flower_1 = Flower("rose", "red", 15, 10)
+    flower_1 = Flower("rose", "red", 15, 10, 8)
     flower_1.show()
     show_statistics(flower_1)
-    flower_1.bloom()
+    flower_1.grow_and_bloom()
     flower_1.show()
     show_statistics(flower_1)
+    print("\n=== Tree")
+    tree_1 = Tree("Oak", 5, 200, 365)
+    tree_1.show()
+    show_statistics(tree_1)
+    tree_1.produce_shade()
+    show_statistics(tree_1)
+    print()
+    print("=== Seed")
+    seed_1 = Seed("Sunflower", "yellow", 80, 45, 1.5)
+    seed_1.show()
+    seed_1.grow_age_bloom(20)
+    seed_1.show()
+    show_statistics(seed_1)
+    print()
+    print("=== Anonymous")
+    unknown_plant_1 = Plant.anonymous()
+    unknown_plant_1.show()
+    show_statistics(unknown_plant_1)
