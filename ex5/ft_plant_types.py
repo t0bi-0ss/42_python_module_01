@@ -10,6 +10,22 @@ class Plant:
     ) -> None:
         """Initialize a plant with name, height (cm), age
         (days) and growth rate (cm)."""
+        if name is None:
+            print("Error: name must not be None")
+            print("Setting name to """)
+            name = ""
+        if height < 0:
+            print("Error: height must not be negative")
+            print("Setting height to 0")
+            height = 0
+        if age < 0:
+            print("Error: age must not be negative")
+            print("Setting age to 0")
+            age = 0
+        if growth_rate < 0:
+            print("Error: growth_rate must not be negative")
+            print("Setting growth_rate to 0")
+            growth_rate = 0
         self._name = name
         self._height = height
         self._age = age
@@ -83,9 +99,10 @@ class Flower(Plant):
         growth_rate: float = 0
     ) -> None:
         """Initialize flower (Plant) with color"""
-        if color == "":
-            print("Error: color must not be an empty string")
-            return
+        if color is None:
+            print("Error: color must not be 'None'")
+            print("Setting color to """)
+            color = ""
         super().__init__(name, height, age, growth_rate)
         self._color = color
         self._is_blooming = False
@@ -127,16 +144,15 @@ class Tree(Plant):
     def __init__(
         self,
         name: str,
-        trunk_diameter:
-        float,
-        height:
-        float = 0,
+        trunk_diameter: float = 0.0,
+        height: float = 0,
         age: int = 0,
         growth_rate: float = 0
     ) -> None:
-        if trunk_diameter <= 0:
+        if trunk_diameter < 0:
             print("Error: trunk diameter must be a positive number")
-            return
+            print("Setting trunk diameter to zero")
+            trunk_diameter = 0
         super().__init__(name, height, age, growth_rate)
         self._trunk_diameter = trunk_diameter
 
@@ -173,15 +189,14 @@ class Vegetable(Plant):
         growth_rate: float = 0,
         nutritional_value: int = 0,
     ) -> None:
-        if name == "":
-            print("Error: name must not be an empty string")
-            return
-        if harvest_season == "":
-            print("Error: harvest season must not be an empty string")
-            return
+        if harvest_season is None:
+            print("Error: harvest season must not be None")
+            print("Setting harvest season to """)
+            harvest_season = ""
         if nutritional_value < 0:
             print("Error: nutritional value must not be a negative number")
-            return
+            print("Setting nutritional value to zero")
+            nutritional_value = 0
         super().__init__(name, height, age, growth_rate)
         self._nutritional_value = nutritional_value
         self._harvest_season = harvest_season
