@@ -12,7 +12,7 @@ class Plant:
         (days) and growth rate (cm)."""
         if name is None:
             print("Error: name must not be None")
-            print("Setting name to """)
+            print("Setting name to ''")
             name = ""
         if height < 0:
             print("Error: height must not be negative")
@@ -101,7 +101,7 @@ class Flower(Plant):
         """Initialize flower (Plant) with color"""
         if color is None:
             print("Error: color must not be 'None'")
-            print("Setting color to """)
+            print("Setting color to ''")
             color = ""
         super().__init__(name, height, age, growth_rate)
         self._color = color
@@ -191,7 +191,7 @@ class Vegetable(Plant):
     ) -> None:
         if harvest_season is None:
             print("Error: harvest season must not be None")
-            print("Setting harvest season to """)
+            print("Setting harvest season to ''")
             harvest_season = ""
         if nutritional_value < 0:
             print("Error: nutritional value must not be a negative number")

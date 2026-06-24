@@ -15,7 +15,7 @@ class Plant:
         self._age = age
         self._growth_rate = growth_rate
 
-    @property 
+    @property
     def name(self) -> str:
         return self._name
 
@@ -23,9 +23,28 @@ class Plant:
     def height(self) -> float:
         return self._height
 
+    @height.setter
+    def height(self, new_height: int) -> None:
+        if new_height < 0:
+            print(f"{self._name.capitalize()}: ", end="")
+            print("Error, height can't be negative")
+            print("Height update rejected")
+        else:
+            self._height = new_height
+            print(f"Height updated: {self._height}cm")
+
     @property
     def age(self) -> int:
         return self._age
+
+    @age.setter
+    def age(self, new_age: int) -> None:
+        if new_age < 0:
+            print(f"{self._name.capitalize()}: Error, age can't be negative")
+            print("Age update rejected")
+        else:
+            self._age = new_age
+            print(f"Age updated: {self._age} days")
 
     @property
     def growth_rate(self) -> float:
@@ -56,25 +75,6 @@ class Plant:
             print("Error: days must be a positive number")
             return
         self._age += days
-
-    @height.setter
-    def height(self, new_height: int) -> None:
-        if new_height < 0:
-            print(f"{self._name.capitalize()}: ", end="")
-            print("Error, height can't be negative")
-            print("Height update rejected")
-        else:
-            self._height = new_height
-            print(f"Height updated: {self._height}cm")
-
-    @age.setter
-    def age(self, new_age: int) -> None:
-        if new_age < 0:
-            print(f"{self._name.capitalize()}: Error, age can't be negative")
-            print("Age update rejected")
-        else:
-            self._age = new_age
-            print(f"Age updated: {self._age} days")
 
 
 if __name__ == "__main__":

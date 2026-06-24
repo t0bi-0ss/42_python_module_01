@@ -14,6 +14,9 @@ class Plant:
                 self._calls[method_name] = 1
 
         def get_call(self, method_name: str) -> int:
+            if method_name not in self._calls:
+                print("Error: method name is not valid")
+                return -1
             return self._calls[method_name]
 
     """A decorator to intercept calls"""
@@ -34,12 +37,11 @@ class Plant:
     ) -> None:
         """Initialize a plant with name, height (cm), age
         (days) and growth rate (cm)."""
-        if height >= 0 and age >= 0 and name != "":
-            self._name = name
-            self._height = height
-            self._age = age
-            self._growth_rate = growth_rate
-            self._statistics = self.Statistics()
+        self._name = name
+        self._height = height
+        self._age = age
+        self._growth_rate = growth_rate
+        self._statistics = self.Statistics()
 
     def get_name(self) -> str:
         return self._name
@@ -123,9 +125,6 @@ class Flower(Plant):
         growth_rate: float = 0
     ) -> None:
         """Initialize flower (Plant) with color"""
-        if color == "":
-            print("Error: color must not be an empty string")
-            return
         super().__init__(name, height, age, growth_rate)
         self._color = color
         self._is_blooming = False
@@ -172,14 +171,11 @@ class Tree(Plant):
     def __init__(
         self,
         name: str,
-        trunk_diameter: float,
+        trunk_diameter: float = 0,
         height: float = 0,
         age: int = 0,
         growth_rate: float = 0
     ) -> None:
-        if trunk_diameter <= 0:
-            print("Error: trunk diameter must be a positive number")
-            return
         super().__init__(name, height, age, growth_rate)
         self._trunk_diameter = trunk_diameter
         self._statistics._calls["produce_shade"] = 0
@@ -218,15 +214,6 @@ class Vegetable(Plant):
         growth_rate: float = 0,
         nutritional_value: int = 0,
     ) -> None:
-        if name == "":
-            print("Error: name must not be an empty string")
-            return
-        if harvest_season == "":
-            print("Error: harvest season must not be an empty string")
-            return
-        if nutritional_value < 0:
-            print("Error: nutritional value must not be a negative number")
-            return
         super().__init__(name, height, age, growth_rate)
         self._nutritional_value = nutritional_value
         self._harvest_season = harvest_season
@@ -304,13 +291,13 @@ def show_statistics(object: Plant) -> None:
     print(f"[statistics for {object.get_name()}]")
     print(
         "Stats: "
-        + f"{object._statistics.get_call("grow")} grow"
-        + f", {object._statistics.get_call("age")} age"
-        + f", {object._statistics.get_call("show")} show"
+        + f"{object._statistics.get_call('grow')} grow"
+        + f", {object._statistics.get_call('age')} age"
+        + f", {object._statistics.get_call('show')} show"
     )
     if "produce_shade" in object._statistics._calls:
         print(
-            f"{object._statistics.get_call("produce_shade")} shade"
+            f"{object._statistics.get_call('produce_shade')} shade"
         )
 
 

@@ -1,4 +1,6 @@
-# Pyhton module that prints a series of variables with set values
+"""
+Pyhton module that prints a series of variables with set values
+"""
 
 if __name__ == "__main__":
     plant_name = "Rose"

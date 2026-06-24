@@ -29,7 +29,7 @@ class Plant:
     def grow(self) -> None:
         """Increment plant's heigth by growth rate"""
         if self.growth_rate == 0:
-            print("Error: growth_rate has not been set yet")
+            print("Error: growth_rate has not yet been set")
             return
         self.height += self.growth_rate
 
