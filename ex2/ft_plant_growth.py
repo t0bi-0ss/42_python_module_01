@@ -16,11 +16,10 @@ class Plant:
     ) -> None:
         """Initialize a plant with name, height (cm), age
         (days) and growth rate (cm)."""
-        if height >= 0 and age >= 0 and name != "":
-            self.name = name
-            self.height = height
-            self.age = age
-            self.growth_rate = growth_rate
+        self.name = name
+        self.height = height
+        self.age = age
+        self.growth_rate = growth_rate
 
     def show(self) -> None:
         """Print the plant's information."""

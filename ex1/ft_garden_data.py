@@ -9,10 +9,9 @@ class Plant:
 
     def __init__(self, name: str, height: int = 0, age: int = 0) -> None:
         """Initialize a plant with name, height (cm), and age (days)."""
-        if height >= 0 and age >= 0 and name != "":
-            self.name = name
-            self.height = height
-            self.age = age
+        self.name = name
+        self.height = height
+        self.age = age
 
     def show(self) -> None:
         """Print the plant's information."""
