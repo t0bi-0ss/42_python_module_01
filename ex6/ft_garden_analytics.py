@@ -274,14 +274,6 @@ class Seed(Flower):
         age: int = 0,
         growth_rate: float = 0
     ) -> None:
-        if name == "":
-            print("Error: name must not be empty")
-            return
-        if color == "":
-            print("Error: color must not be empty")
-            return
-        if age < 0 or height < 0:
-            print("Error: age and height must not be negative numbers")
         super().__init__(name, color, height, age, growth_rate)
         self._seeds = 0
 
