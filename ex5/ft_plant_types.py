@@ -10,11 +10,10 @@ class Plant:
     ) -> None:
         """Initialize a plant with name, height (cm), age
         (days) and growth rate (cm)."""
-        if height >= 0 and age >= 0 and name != "":
-            self._name = name
-            self._height = height
-            self._age = age
-            self._growth_rate = growth_rate
+        self._name = name
+        self._height = height
+        self._age = age
+        self._growth_rate = growth_rate
 
     def get_name(self) -> str:
         return self._name
